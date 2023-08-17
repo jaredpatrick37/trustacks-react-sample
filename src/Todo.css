@@ -1,0 +1,41 @@
+.Todo {
+    background: #252525;
+    border-bottom: 2px solid #1c1c1c;
+    border-radius: 5px;
+    padding: 15px;
+    position: relative;
+}
+
+.Todo .Description {
+    text-decoration: none;
+}
+
+.Todo .Description[data-completed="true"] {
+    text-decoration: line-through;
+}
+
+.Todo .CompleteCheckbox {
+    margin-right: 20px;
+    outline: none;
+    user-select: none;
+}
+
+.Todo .Delete {
+    background: none;
+    border: none;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    outline: none;
+    padding: 16px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    user-select: none;
+}
+
+.Todo .Delete svg {
+    fill: #eee;
+    padding: 0;
+    margin: 0;
+    width: 15px;
+}

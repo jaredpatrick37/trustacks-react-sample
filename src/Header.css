@@ -1,0 +1,8 @@
+.Header {
+    color: #eee;
+}
+
+.Header .Title {
+    margin: 0;
+    padding: 30px 0;
+}

@@ -1,0 +1,4 @@
+image:
+  repository: jaredp37/trustacks-react-tutorial 
+  tag: 0.1.0
+host: host.docker.internal
