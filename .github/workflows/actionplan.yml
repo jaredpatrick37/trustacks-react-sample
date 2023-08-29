@@ -1,0 +1,29 @@
+name: Action Plan
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on: workflow_dispatch
+
+jobs:
+  trustacks:
+    runs-on: ubuntu-latest
+    container:
+        image: quay.io/trustacks/tsctl:0.1.0
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: run action plan
+        run: |
+          export DOCKER_HOST=tcp://docker:2375
+          until docker version > /dev/null 2>&1; do sleep 1; done
+          tsctl login --username ${{ secrets.TRUSTACKS_USERNAME }} --password ${{ secrets.TRUSTACKS_PASSWORD }} --server https://stage.trustacks.io
+          tsctl run --plan instagram-mern-backend --server https://stage.trustacks.io
+        env:
+          SOPS_AGE_KEY: ${{ secrets.AGE_SECRET_KEY }}
+    services:
+      docker:
+        image: docker:dind
+        env:
+          DOCKER_TLS_CERTDIR: ""
+        options: --privileged
